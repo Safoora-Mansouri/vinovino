@@ -56,10 +56,18 @@ class SingleCellar extends Component
     
     public function render()
     {
-        $this->cellar = Cellar::with(['bottles' => function ($query) {
-            $query->whereNull('bottle_in_cellars.deleted_at');
-        }])->where('id', $this->cellarId)->first();
+        $this->cellar = Cellar::with([
+                'bottles' => function ($query) {
+                    $query->whereNull('bottle_in_cellars.deleted_at');
+                },
+                'unlisted_bottles'=> function ($query) {
+                    $query->whereNull('bottle_in_cellars.deleted_at');
+                },
+            ])
+            ->where('id', $this->cellarId)
+            ->first();
     
         return view('livewire.single-cellar', ['cellar' => $this->cellar]);
-    }    
+    }
+       
 }

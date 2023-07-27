@@ -24,4 +24,10 @@ class Cellar extends Model
                 ->withPivot('quantity'); // pour récuperer la donnée quantité 
     }
 
+    public function unlisted_bottles()
+    {
+        return $this->belongsToMany(UnlistedBottle::class, 'bottle_in_cellars')
+        ->withPivot('quantity'); // pour récuperer la donnée quantité 
+    }
+
 }

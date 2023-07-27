@@ -17,6 +17,8 @@ use App\Http\Livewire\AddBottle;
 use App\Http\Controllers\CustomAuthController;
 use App\Http\Livewire\BottleAdvancedForm;
 use App\Http\Livewire\SearchAdvancedResults;
+use App\Http\Livewire\BottleSearch;
+use App\Http\Livewire\AddBottlesToCellar;
 
 use App\Http\Livewire\UpdateBottle;
 
@@ -50,6 +52,8 @@ Route::get('/bottles/{bottle_id}', SingleBottle::class);
 Route::get('/cellars', ManyCellars::class)->name('cellars');
 Route::get('/bottle', BottleAdvancedForm::class)->name('bottle-advanced-form');
 Route::get('/search', SearchAdvancedResults::class)->name('search-advanced-results');
+Route::get('/bottlesearch', BottleSearch::class)->name('bottle-search');
+
 /////////////////////// Fin Farzad ///////
 
 
@@ -70,12 +74,11 @@ Route::get('bottles',ManyBottles::class)->name('bottles');
 Route::get('/bottles/{bottle_id}', SingleBottle::class);
 
 Route::get('/add-cellar', AddCellar::class)->name('add-cellar');
-Route::post('/add-cellar', [AddCellar::class, 'store'])->name('add-cellar.store');
-
-Route::post('/add-cellar', [AddCellar::class, 'store']);
 
 
 Route::get('/update_bottle/{cellar_id}/{bottle_id}', UpdateBottle::class)->name('update_bottle');
+Route::get('/add-bottles-to-cellar/{bottle_id}/{unliste}', AddBottlesToCellar::class)->name('add-bottles-to-cellar');
+
 // Route::get('/ajouter-cellier', AjouterCellier::class)->name('ajouter_cellier');
 
 

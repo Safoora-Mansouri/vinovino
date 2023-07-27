@@ -1,5 +1,14 @@
-<div class="sticky bottom-0 w-full left-0 right-0 flex items-center justify-between">
+<div class="sticky bottom-0 w-full left-0 right-0 flex items-center justify-between bg-red">
     <div class="flex w-full px-4 text-center text-white dark:bg-neutral-600">
+    <button class='w-full flex justify-center items-center' wire:click="$emit('toggleSearch')">
+            <svg class="h-8 w-8 text-red-500"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+            </svg>
+            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+            </svg>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h4v4m-2-3.586L7.707 7.707a1 1 0 00-1.414 1.414l4.243 4.243M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+        </button>
                 <!-- ICÔNE WISHLIST -->
                 <button class='hover:bg-pale-pink w-full flex justify-center' wire:click="redirectToWishlist">
                     <!-- BLANCHE -->
@@ -18,7 +27,8 @@
                 </button>
 
                 <!-- Icône AddBottle -->
-                <button class='hover:bg-pale-pink w-full flex justify-center' wire:click="redirectToAddBottle">
+             <button class='hover:bg-pale-pink w-full flex justify-center'
+              wire:click="redirectToAddBottle">
                     <!-- BLANCHE -->
                     <svg viewBox="-14 -7 80 67.5" class="w-14 h-14"  xmlns="http://www.w3.org/2000/svg">
                         <path stroke='#fff' stroke-width='0.7' d="M21.087 0H2.913A2.917 2.917 0 0 0 0 2.913v18.174A2.917 2.917 0 0 0 2.913 24h18.174A2.917 2.917 0 0 0 24 21.087V2.913A2.917 2.917 0 0 0 21.087 0ZM22 21.087a.915.915 0 0 1-.913.913H2.913A.915.915 0 0 1 2 21.087V2.913A.915.915 0 0 1 2.913 2h18.174a.915.915 0 0 1 .913.913ZM51.087 0H32.913A2.917 2.917 0 0 0 30 2.913v18.174A2.917 2.917 0 0 0 32.913 24h18.174A2.917 2.917 0 0 0 54 21.087V2.913A2.917 2.917 0 0 0 51.087 0ZM52 21.087a.915.915 0 0 1-.913.913H32.913a.915.915 0 0 1-.913-.913V2.913A.915.915 0 0 1 32.913 2h18.174a.915.915 0 0 1 .913.913ZM21.087 30H2.913A2.917 2.917 0 0 0 0 32.913v18.174A2.917 2.917 0 0 0 2.913 54h18.174A2.917 2.917 0 0 0 24 51.087V32.913A2.917 2.917 0 0 0 21.087 30ZM22 51.087a.915.915 0 0 1-.913.913H2.913A.915.915 0 0 1 2 51.087V32.913A.915.915 0 0 1 2.913 32h18.174a.915.915 0 0 1 .913.913Z" style="paint-order: stroke; fill: rgb(255, 255, 255);" transform="matrix(1, 0, 0, 1, 0, 1.7763568394002505e-15)" />
@@ -41,3 +51,5 @@
                 </button>
     </div>
 </div>
+
+

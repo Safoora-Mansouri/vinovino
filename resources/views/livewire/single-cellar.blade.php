@@ -2,7 +2,9 @@
     <h1 class="text-3xl font-bold mb-4">{{ $cellar->name }}</h1>
     <h2 class="text-xl font-semibold mb-2">Bouteilles:</h2>
     <ul class="grid grid-cols-1 gap-4">
-      
+        <a href="{{ route('bottles') }}"  class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600">
+            @livewire('button', ['label' => 'Ajouter bottles'])
+        </a>
         @foreach($cellar->bottles as $bottle)
             <li class="bg-white p-4 shadow-md rounded-md flex justify-around	 items-center">
                 <div>
@@ -30,7 +32,7 @@
                     </a>
 
                     <div class="py-2">
-                  
+                   
                       @livewire('delete-bottle', ['bottleId' =>$bottle->id, 'cellarId' => $cellar->id])
 
                     </div>

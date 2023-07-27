@@ -11,7 +11,7 @@
 <body>
     @livewire('header')
 
-    <div class="h-screen">
+    <div>
         {{ $slot }}
     </div>
 

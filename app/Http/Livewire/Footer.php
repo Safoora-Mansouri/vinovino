@@ -28,5 +28,10 @@ class Footer extends Component
         $url = route('wishlist');
         return redirect($url);
     }
+
+    public function redirectToBottleSearch()
+    {
+        return redirect()->route('bottle-search');
+    }
 }
 

@@ -23,8 +23,8 @@ class AddCellar extends Component
     public function store()
     {
         $this->validate();
-        $userId=2;
-        // $userId = Auth::check() ? Auth::id() : null;
+        // $userId=2;
+        $userId = Auth::check() ? Auth::id() : null;
 
         Cellar::create([
             'name' => $this->nom,

@@ -70,6 +70,7 @@ class AddBottle extends Component
             'image' => 'mimes:png,jpeg,jpg,jpe|nullable'
         ]);
 
+        logger($this->name);
         // transforme le champ Prix si la donnée est vide
         $validUnlistedBottle['price'] = $this->price ?: null;
 

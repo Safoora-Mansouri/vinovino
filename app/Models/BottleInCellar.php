@@ -12,6 +12,7 @@ class BottleInCellar extends Model
     use SoftDeletes;
     protected $table = 'bottle_in_cellars';
     protected $fillable = [
+        'unlisted_bottle_id',
         'bottle_id',
         'cellar_id',
         'quantity'

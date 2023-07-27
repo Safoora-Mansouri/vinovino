@@ -4,25 +4,31 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use App\Models\Bottle;
+use App\Models\UnlistedBottle;
 use Livewire\WithPagination;
 
 class ManyBottles extends Component
 {
     use WithPagination;
-    public $search = '';
-    public $component = 'bottles';
 
-    public function styles()
+    public $filter = true;
+    public $search = '';
+    public $showSearch = false; 
+
+    public function paginationView()
     {
-        return [
-            'css/livewire.css',
-        ];
+        return 'vendor.livewire.tailwind';
     }
+
 
     public function render()
     {
-        $bottles = Bottle::query();
         
+        if ($this->filter){
+            $bottles = Bottle::query();
+        }else{
+            $bottles = UnlistedBottle::query();
+        }
         if (!empty($this->search)) {
             $bottles->where(function ($query) {
                 $query->where('name', 'LIKE', '%' . $this->search . '%')
@@ -36,18 +42,30 @@ class ManyBottles extends Component
                 }
             });
         }
-        
+
         $bottles = $bottles->orderBy('name')->paginate(9);
-    
-        return view('livewire.many-bottles', [
-            'bottles' => $bottles,
-        ])->layout('layouts.app');
+
+        return view('livewire.many-bottles', ['bottles' => $bottles,'filter' => $this->filter])->layout('layouts.app');
     }
     
-    protected $listeners = ['searchPerformed' => 'performSearch', 'resultSelected' => 'performSearch'];
+    protected $listeners = ['toggleSearch', 'searchPerformed' => 'performSearch', 
+    'Filter'=> 'FilterBottles'];
 
     public function performSearch($searchTerm)
     {
         $this->search = $searchTerm;
+        $this->resetPage();  // Reset the current page to 1 after each search
     }
+
+    public function toggleSearch()
+    {
+        $this->showSearch = !$this->showSearch; // Toggle the visibility
+    }
+
+    public function FilterBottles($newFilter)
+{
+    $this->filter = $newFilter;
+    $this->resetPage();
+}
+
 }

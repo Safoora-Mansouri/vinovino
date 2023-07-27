@@ -16,6 +16,8 @@ class SingleBottle extends Component
         $this->bottleId = $bottle_id;
     }
 
+    
+
     public function render()
     {
         //Exemple, tu peux l'utiliser où tu en as de besoin pour accéder à l'id c'est $cellar['id'] et le nom $cellar['name']
