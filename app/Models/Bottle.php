@@ -20,7 +20,8 @@ class Bottle extends Model
         'url_image',
         'description',
         'format',
-        'vintage'
+        'vintage',
+        'unlisted',
     ];
 
     public function type(){

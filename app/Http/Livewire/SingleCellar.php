@@ -11,7 +11,7 @@ class SingleCellar extends Component
     public $cellarId;
     public $cellar;
     public $count;
-    protected $listeners = ['bottleDeleted' => 'handleBottleDeleted'];
+    protected $listeners = ['bottleDeleted' => 'handleBottleDeleted', "incrementListen"=> "increment"];
 
     public function handleBottleDeleted()
     {
@@ -20,6 +20,20 @@ class SingleCellar extends Component
             $query->whereNull('bottle_in_cellars.deleted_at');
         }])->where('id', $this->cellarId)->first();
     }
+
+    public function deleteBottle($bottleId)
+    {
+        $bottleInCellar = BottleInCellar::where('bottle_id', $bottleId)
+            ->where('cellar_id', $this->cellarId)
+            ->first();
+
+        if ($bottleInCellar) {
+            $bottleInCellar->delete();
+        }
+
+        $this->emit('bottleDeleted');  // emit an event to notify that a bottle was deleted
+    }
+
     public function increment($bottle_id)
     {
         $bottleInCellar = BottleInCellar::where('cellar_id', $this->cellarId)
@@ -59,10 +73,7 @@ class SingleCellar extends Component
         $this->cellar = Cellar::with([
                 'bottles' => function ($query) {
                     $query->whereNull('bottle_in_cellars.deleted_at');
-                },
-                'unlisted_bottles'=> function ($query) {
-                    $query->whereNull('bottle_in_cellars.deleted_at');
-                },
+                }
             ])
             ->where('id', $this->cellarId)
             ->first();

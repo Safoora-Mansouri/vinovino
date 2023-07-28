@@ -11,9 +11,9 @@ class ManyBottles extends Component
 {
     use WithPagination;
 
-    public $filter = true;
+    public $unlisted = null;
     public $search = '';
-    public $showSearch = false; 
+    public $showSearch = false;
 
     public function paginationView()
     {
@@ -23,21 +23,21 @@ class ManyBottles extends Component
 
     public function render()
     {
-        
-        if ($this->filter){
-            $bottles = Bottle::query();
-        }else{
-            $bottles = UnlistedBottle::query();
+
+        if ($this->unlisted) {
+            $bottles = Bottle::where('unlisted', true);
+        } else {
+            $bottles = Bottle::where('unlisted', null);
         }
         if (!empty($this->search)) {
             $bottles->where(function ($query) {
                 $query->where('name', 'LIKE', '%' . $this->search . '%')
-                      ->orWhere('description', 'LIKE', '%' . $this->search . '%')
-                      ->orWhere('code_saq', 'LIKE', $this->search . '%');
+                    ->orWhere('description', 'LIKE', '%' . $this->search . '%')
+                    ->orWhere('code_saq', 'LIKE', $this->search . '%');
                 if (is_numeric($this->search)) {
                     $query->orWhere(function ($query) {
                         $query->where('price', '>=', (float)$this->search)
-                              ->where('price', '<', (float)$this->search + 1);
+                            ->where('price', '<', (float)$this->search + 1);
                     });
                 }
             });
@@ -45,11 +45,13 @@ class ManyBottles extends Component
 
         $bottles = $bottles->orderBy('name')->paginate(9);
 
-        return view('livewire.many-bottles', ['bottles' => $bottles,'filter' => $this->filter])->layout('layouts.app');
+        return view('livewire.many-bottles', ['bottles' => $bottles, 'filter' => $this->unlisted])->layout('layouts.app');
     }
-    
-    protected $listeners = ['toggleSearch', 'searchPerformed' => 'performSearch', 
-    'Filter'=> 'FilterBottles'];
+
+    protected $listeners = [
+        'toggleSearch', 'searchPerformed' => 'performSearch',
+        'Filter' => 'FilterBottles'
+    ];
 
     public function performSearch($searchTerm)
     {
@@ -63,9 +65,8 @@ class ManyBottles extends Component
     }
 
     public function FilterBottles($newFilter)
-{
-    $this->filter = $newFilter;
-    $this->resetPage();
-}
-
+    {
+        $this->unlisted = $newFilter;
+        $this->resetPage();
+    }
 }

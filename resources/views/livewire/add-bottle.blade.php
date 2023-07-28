@@ -1,4 +1,8 @@
 <div>
+    @if (session()->has('message'))
+    <div class="mb-4 text-green-500">{{ session('message') }}</div>
+    @endif
+
     <form wire:submit.prevent class='w-full p-4 bg-white shadow-lg rounded-lg'>
         @csrf
         <div class="space-y-12">
@@ -59,7 +63,7 @@
                         </div>
 
                         <div class="sm:col-span-3">
-                            <label for="country" class="block text-sm font-medium leading-6 text-gray-900">Type</label>
+                            <label for="type" class="block text-sm font-medium leading-6 text-gray-900">Type</label>
                             <div class="mt-2">
                                 <select id="type_id" name="type_id" autocomplete="type_id" wire:model='type_id' class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">
                                     @foreach ($types as $type)
@@ -70,37 +74,21 @@
                             </div>
                         </div>
 
-                        <div class="col-span-full">
-                            <label for="image" class="block text-sm font-medium leading-6 text-gray-900">Image</label>
-                            <div class="mt-2 flex items-center gap-x-3">
-                                <div class="w-12 h-12 rounded-full flex items-center justify-center border ring-gray-300">
-                                    <!-- Display the selected image if available -->
-                                    @if($image)
-                                    <img src="{{ $image->temporaryUrl() }}" alt="Uploaded Image" class="w-12 h-12 rounded-full">
-                                    @else
-                                    <!-- Default image if no image is selected -->
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#251322" class="w-6 h-6 fill-transparent">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5 1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
-                                    </svg>
-                                    @endif
-                                </div>
-                                <label for='image' class="rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
-                                    Change
-                                </label>
-                                <input type="file" wire:model="image" id="image" class="hidden">
+                        <div class="sm:col-span-4">
+                            <label for="type" class="block text-sm font-medium leading-6 text-gray-900">Image URL</label>
+                            <div class="mt-2">
+                                <input wire:model="image" id="image" type="text" name="image" autocomplete="image" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                                 @error('image') <span class="text-red">{{ $message }}</span> @enderror
                             </div>
-                            <!-- Add the file input element -->
                         </div>
                     </div>
-                </div>
 
 
-                <div class="mt-6 flex items-center justify-end gap-x-6">
-                    <button type="button" class="text-sm font-semibold leading-6 text-gray-900">Annuler</button>
-                    <button wire:click="saveUnlistedBottle" class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Ajouter</button>
+                    <div class="mt-6 flex items-center justify-end gap-x-6">
+                        <button type="button" class="text-sm font-semibold leading-6 text-gray-900">Annuler</button>
+                        <button wire:click="saveUnlistedBottle" class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Ajouter</button>
+                    </div>
                 </div>
             </div>
-        </div>
     </form>
 </div>

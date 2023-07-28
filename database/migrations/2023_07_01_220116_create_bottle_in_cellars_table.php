@@ -17,15 +17,11 @@ class CreateBottleInCellarsTable extends Migration
             $table->id()->notNullable();
             
             $table->unsignedBigInteger('bottle_id');
-            $table->unsignedBigInteger('unlisted_bottle_id');
-
             $table->unsignedBigInteger('cellar_id');
             $table->unsignedInteger('quantity')->notNullable();
             $table->timestamps();
             $table->foreign('cellar_id')->references('id')->on('cellars');
 
-            $table->foreign('bottle_id')->references('id')->on('wine_bottles');
-            $table->foreign('unlisted_bottle_id')->references('id')->on('unlisted_bottles');
         });
     }
 

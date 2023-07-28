@@ -77,7 +77,7 @@ Route::get('/add-cellar', AddCellar::class)->name('add-cellar');
 
 
 Route::get('/update_bottle/{cellar_id}/{bottle_id}', UpdateBottle::class)->name('update_bottle');
-Route::get('/add-bottles-to-cellar/{bottle_id}/{unliste}', AddBottlesToCellar::class)->name('add-bottles-to-cellar');
+Route::get('/add-bottles-to-cellar/{bottle_id}', AddBottlesToCellar::class)->name('add-bottles-to-cellar');
 
 // Route::get('/ajouter-cellier', AjouterCellier::class)->name('ajouter_cellier');
 

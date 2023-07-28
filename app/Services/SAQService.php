@@ -218,7 +218,9 @@ class SAQService
         $retour->raison = '';
 
         //vérifier si le produit exsite déjà dans la BD
-        $rows = Bottle::where('code_saq', $bte->desc->code_SAQ)->count();
+        $rows = Bottle::where('code_saq', $bte->desc->code_SAQ)
+        ->where('code_saq', null)/////////////////////???????????????
+        ->count();
 
 
         //Création d'une nouvelle instance de bouteille 
@@ -236,6 +238,7 @@ class SAQService
             $nouvelleBouteille->url_image = $bte->img;
             $nouvelleBouteille->format = $bte->desc->format;
             $nouvelleBouteille->vintage = $bte->vintage;
+            $nouvelleBouteille->unlisted = false;
 
             try {
                 //tentative d'enregistrement, si ça fonctionne un message de succes sera inséré dans l'objet

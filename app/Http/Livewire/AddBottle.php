@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Bottle;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Database\QueryException;
@@ -41,7 +42,7 @@ class AddBottle extends Component
         'description.max' => 'Le champ description ne doit pas dépasser :max caractères.',
         'price.number' => 'Le champ prix ne doit être un nombre.',
         'vintage.digits' => 'Le champ vintage doit être une année.',
-        'image.mimes' => 'L\'image chargée doit être de type jpeg, jpg ou jpe.',
+        // 'image.mimes' => 'L\'image chargée doit être de type jpeg, jpg ou jpe.',
     ];
 
     public function mount($bottle = null)
@@ -67,7 +68,7 @@ class AddBottle extends Component
             'format' => 'nullable',
             'country_id' => 'exists:countries,id|nullable',
             'type_id' => 'exists:types,id|nullable',
-            'image' => 'mimes:png,jpeg,jpg,jpe|nullable'
+            'image' => ''
         ]);
 
         logger($this->name);
@@ -75,16 +76,19 @@ class AddBottle extends Component
         $validUnlistedBottle['price'] = $this->price ?: null;
 
         // Sauvegardez l'image dans le stockage et obtenez son chemin
-        if ($this->image) {
-            $imagePath = $this->image->store('bottle_images', 'public');
-            $validUnlistedBottle['url_image'] = $imagePath;
-        }
-
+        // if ($this->image) {
+            // $imagePath = $this->image->store('bottle_images', 'public');
+            // $validUnlistedBottle['url_image'] = $imagePath;
+        // }
+        $validUnlistedBottle["unlisted"] = true;
         // Créez une nouvelle instance de UnlistedBottle et remplissez-la avec les données validées
         $unlistedBottle = new UnlistedBottle($validUnlistedBottle);
+        $Bottle = new Bottle($validUnlistedBottle);
 
         // Sauvegardez le nouvel enregistrement UnlistedBottle dans la base de données
         $unlistedBottle->save();
+        $Bottle->save();
+        session()->flash('message', 'Bouteille ajouté avec succès.');
 
         // Effacez les champs du formulaire après une sauvegarde réussie
         $this->resetForm();

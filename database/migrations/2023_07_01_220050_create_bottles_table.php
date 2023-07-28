@@ -26,10 +26,10 @@ class CreateBottlesTable extends Migration
             $table->string('url_image', 200)->nullable();
             $table->string('format', 20)->nullable();
             $table->year('vintage')->nullable();
+            $table->boolean('unlisted')->nullable();
             $table->foreign('type_id')->references('id')->on('types');
             $table->foreign('country_id')->references('id')->on('countries');
             $table->timestamps();
-
             
         });
     }
