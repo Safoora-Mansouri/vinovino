@@ -26,12 +26,19 @@ class AddCellar extends Component
         // $userId=2;
         $userId = Auth::check() ? Auth::id() : null;
 
-        Cellar::create([
-            'name' => $this->nom,
-            'user_id' => $userId
-        ]);
-
-        session()->flash('message', 'Cellier ajouté avec succès.');
+        if ($userId) {
+            Cellar::create([
+                'name' => $this->nom,
+                'user_id' => $userId
+            ]);
+    
+            session()->flash('message', 'Cellier ajouté avec succès.');
+        } else {
+            //redirect
+            session()->flash('message', 'faire login.');
+        }
+        
+       
 
         $this->reset('nom');
     }

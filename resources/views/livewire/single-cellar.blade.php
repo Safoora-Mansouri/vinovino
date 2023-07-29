@@ -11,7 +11,7 @@
 
 
             <article class="mx-6 my-2 flex border-2 border-gold rounded-lg items-center gap-2">
-                <img src="{{ $bottle->image }}" alt="{{ $bottle->name }}" class="w-36 h-40">
+                <img src="{{ $bottle->image }}" alt="{{ $bottle->name }}" class="w-36 h-40" style="width: 144px; height: 160px;">
                 <div class="flex flex-col justify-end items-end p-4  sm:flex-row sm:justify-between sm:gap-4">
                     <h1 class="text-right font-bold font-roboto">{{ $bottle->name }}</h1>
                     <p class="text-xs mt-2 mb-2">{{ $bottle->description }}</p>
@@ -59,8 +59,8 @@
                                     Supprimer Bottle
                                 </button>
 
-                                <a href="#" class="block rounded-lg px-4 py-2 text-sm text-gray-500 hover:bg-gray-50 hover:text-gray-700" role="menuitem">
-                                    boire bouteille
+                                <a href="{{ route('bouteille-consumee', ['cellar_id' => $cellar->id,'bottle_id' => $bottle->id]) }}" class="block rounded-lg px-4 py-2 text-sm text-gray-500 hover:bg-gray-50 hover:text-gray-700" role="menuitem">
+                                    Bouteille consumee
                                 </a>
                             </div>
                         </div>

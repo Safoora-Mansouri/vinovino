@@ -3,26 +3,31 @@
 namespace App\Http\Livewire;
 
 use App\Models\Cellar;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class ManyCellars extends Component
 {
     public $cellars;
     public $search = '';
+    public $userId;
 
     protected $listeners = ['searchPerformed'];
 
     public function mount()
     {
+        $this->userId = Auth::check() ? Auth::id() : null;
         $this->loadCellars();
+       
     }
 
     public function loadCellars()
     {
         if (!empty($this->search)) {
-            $this->cellars = Cellar::where('name', 'LIKE', '%' . $this->search . '%')->get();
+            $this->cellars = Cellar::where('name', 'LIKE', '%' . $this->search . '%')
+                ->where('user_id', $this->userId)->get();
         } else {
-            $this->cellars = Cellar::all();
+            $this->cellars = Cellar::where('user_id', $this->userId)->get();
         }
     }
 
@@ -32,9 +37,8 @@ class ManyCellars extends Component
     }
 
     public function searchPerformed($search)
-{
-    $this->search = $search;
-    $this->loadCellars();
-}
-
+    {
+        $this->search = $search;
+        $this->loadCellars();
+    }
 }

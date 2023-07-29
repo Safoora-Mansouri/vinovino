@@ -19,7 +19,7 @@ use App\Http\Livewire\BottleAdvancedForm;
 use App\Http\Livewire\SearchAdvancedResults;
 use App\Http\Livewire\BottleSearch;
 use App\Http\Livewire\AddBottlesToCellar;
-
+use App\Http\Livewire\ConsumedBottle;
 use App\Http\Livewire\UpdateBottle;
 
 /*
@@ -79,7 +79,7 @@ Route::get('/add-cellar', AddCellar::class)->name('add-cellar');
 Route::get('/update_bottle/{cellar_id}/{bottle_id}', UpdateBottle::class)->name('update_bottle');
 Route::get('/add-bottles-to-cellar/{bottle_id}', AddBottlesToCellar::class)->name('add-bottles-to-cellar');
 
-// Route::get('/ajouter-cellier', AjouterCellier::class)->name('ajouter_cellier');
+Route::get('/bouteille-consumee/{cellar_id}/{bottle_id}', ConsumedBottle::class)->name('bouteille-consumee');
 
 
 
