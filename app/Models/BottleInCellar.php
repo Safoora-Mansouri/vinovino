@@ -16,8 +16,4 @@ class BottleInCellar extends Model
         'cellar_id',
         'quantity'
     ];
-
-
-
-    
 }
