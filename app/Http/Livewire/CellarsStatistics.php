@@ -5,7 +5,7 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use App\Models\BottleInCellar;
 
-class CellarStatistics extends Component
+class CellarsStatistics extends Component
 {
     public function render()
     {
@@ -17,6 +17,6 @@ class CellarStatistics extends Component
             ->groupBy('cellar_id')
             ->get();
 
-        return view('livewire.cellar-statistics', compact('statistics'));
+        return view('livewire.cellars-statistics', compact('statistics'));
     }
 }

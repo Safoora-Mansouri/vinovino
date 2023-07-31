@@ -20,9 +20,11 @@ use App\Http\Livewire\SearchAdvancedResults;
 use App\Http\Livewire\BottleSearch;
 use App\Http\Livewire\AddBottlesToCellar;
 use App\Http\Livewire\AdminPanel;
-use App\Http\Livewire\CellarStatistics;
+use App\Http\Livewire\BottlesStatistics;
+use App\Http\Livewire\CellarsStatistics;
 use App\Http\Livewire\ConsumedBottle;
 use App\Http\Livewire\UpdateBottle;
+use App\Http\Livewire\UsersStatistics;
 
 /*
 |--------------------------------------------------------------------------
@@ -85,7 +87,9 @@ Route::get('/bouteille-consumee/{cellar_id}/{bottle_id}', ConsumedBottle::class)
 
 ////////Admin/////////////
 Route::get('/admin-panel', AdminPanel::class)->name('admin-panel');
- Route::get('/cellars-statistics', CellarStatistics::class)->name('cellars-statistics');
+ Route::get('/cellars-statistics', CellarsStatistics::class)->name('cellars-statistics');
+ Route::get('/users-statistics', UsersStatistics::class)->name('users-statistics');
+ Route::get('/bottles-statistics', BottlesStatistics::class)->name('bottles-statistics');
 
 //////////////////////////////////////////////////////////////////////////////////////
 //we have to delete these routes (just for guide)
