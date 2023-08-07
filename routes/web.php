@@ -37,10 +37,10 @@ use App\Http\Livewire\UsersStatistics;
 |
 */
 Route::middleware('auth')->group(function (){ 
-Route::get('/', function () {
-    return view('welcome');
-});
-
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+Route::get('/',ManyBottles::class)->name('bottles');
 // À refaire avec LiveWire  N'oublier pas de mettre des commentaire en Français et le phpDoc aussi. 
 
 
@@ -74,7 +74,6 @@ Route::get('wishlist', AddBottle::class)->name('wishlist');
 Route::get('update',[SaqController::class,'updateSAQ']);
 ////////////////////////////////////////////////////////////////////////////////////////
 
-Route::get('bottles',ManyBottles::class)->name('bottles');
 Route::get('/bottles/{bottle_id}', SingleBottle::class);
 
 Route::get('/add-cellar', AddCellar::class)->name('add-cellar');
