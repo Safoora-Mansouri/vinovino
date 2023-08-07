@@ -6,15 +6,17 @@ use Livewire\Component;
 use App\Models\Bottle;
 use App\Models\Cellar;
 use App\Models\BottleInCellar;
+use Illuminate\Support\Facades\Auth;
 
 class AddBottlesToCellar extends Component
 {
-    public $bottle_id, $cellar_id, $quantity, $bottle;
+    
+    public $bottle_id, $cellar_id, $quantity, $bottle, $cellars;
 
     public function mount($bottle_id)
     {
         $this->bottle_id = $bottle_id;
-        $this->cellar_id = 0;
+        $this->cellars = Cellar::where('user_id', Auth::id())->get();
 
         // Set a default value here, it can be any value that doesn't exist as an ID in your 'cellars' table.
     }
