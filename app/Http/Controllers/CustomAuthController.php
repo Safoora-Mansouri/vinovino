@@ -82,7 +82,7 @@ class CustomAuthController extends Controller
         if (Auth::attempt($credentials)) {
             $user = Auth::user();
             
-            if ($user->id==3) {
+            if ($user->role==1) {
                 return redirect()->intended(route('admin-panel'));
             }
             return redirect()->intended(route('bottles'));
