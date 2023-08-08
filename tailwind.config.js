@@ -11,11 +11,12 @@ module.exports = {
         'red': '#9B0738',
         'pale-pink': '#FB7F6',
         'gold': '#927A50',
+        'gray': '#c4c0bc',
       },
       maxWidth:{
         '100': '100px',
         '150': '150px',
-        '200': '200px'
+        '200': '200px',
       },
       fontFamily: {
         'roboto': ['Roboto', 'sans-serif'],

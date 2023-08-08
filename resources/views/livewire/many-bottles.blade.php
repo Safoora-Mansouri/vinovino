@@ -1,7 +1,7 @@
-<div>
+<div class="mb-16">
     <div class="mt-6">
         <div class="max-w-1200px">
-            <div class="flex items-center justify-between space-x-2 mb-10 mt-5 ml-5">
+            <div class="flex items-center justify-between space-x-2 mb-8 mt-5 ml-5">
                 <div class="flex items-center space-x-2">
                     <button wire:click="$emit('Filter', false)" class="bg-white text-black px-3 py-1 rounded border border-red hover:bg-red hover:text-white transition-colors duration-300">
                         Listée
@@ -20,7 +20,7 @@
             </div>
 
             <!-- Center the search component in mobile mode -->
-            <div class="flex items-center justify-center sm:justify-start sm:items-start sm:space-x-2 sm:mb-4">
+            <div class="flex items-center justify-center sm:justify-start sm:items-start sm:space-x-2 sm:mb-4 ">
                 @if ($showSearch)
                     @livewire('bottle-search')
                 @endif

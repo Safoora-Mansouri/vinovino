@@ -8,12 +8,13 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     @livewireStyles
 </head>
-<body>
+<body class=" flex flex-col h-screen">
     @livewire('header')
 
-    <div class="min-h-screen">
+    <div class="flex-grow overflow-y-auto">
         {{ $slot }}
     </div>
+
 
     @livewire('footer')
     @livewireScripts
