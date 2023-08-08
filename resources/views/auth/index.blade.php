@@ -6,7 +6,7 @@
 </head>
 <body class="bg-gray-100">
     <div class="flex items-end  sm:h-screen justify-center h-screen lg:bg-center bg-center bg-no-repeat bg-cover lg:items-center lg:justify-center">
-        <img src="{{ asset('img/page4.jpg') }}" alt="Background" class="absolute inset-0 object-cover w-full h-screen" style="object-position: 50% 35%;" />
+        <img src="{{ asset('img/page3.jpg') }}" alt="Background" class="absolute inset-0 object-cover w-full h-screen" style="object-position: 50% 35%;" />
         <div class="absolute top-0 left-0 right-0 flex justify-center lg:justify-start">
             <img src="{{ asset('img/logo3.png') }}" alt="Logo" class="w-96 h-50 mt-16">
         </div>
