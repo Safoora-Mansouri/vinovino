@@ -6,12 +6,13 @@ use Livewire\Component;
 use App\Models\Bottle;
 use App\Models\UnlistedBottle;
 use Livewire\WithPagination;
+use PhpOption\None;
 
 class ManyBottles extends Component
 {
     use WithPagination;
 
-    public $unlisted = false;
+    public $unlisted = null;
     public $search = '';
     public $showSearch = false;
 
@@ -27,7 +28,7 @@ class ManyBottles extends Component
         if ($this->unlisted) {
             $bottles = Bottle::where('unlisted', true);
         } else {
-            $bottles = Bottle::where('unlisted', false);
+            $bottles = Bottle::where('unlisted', null);
         }
         if (!empty($this->search)) {
             $bottles->where(function ($query) {

@@ -47,10 +47,10 @@ class CustomAuthController extends Controller
                 'password' => Hash::make($request->password),
             ]);
 
-            Cellar::create([
-                'user_id' => $user->id,
-                'name' => 'Cellier 1'
-            ]);
+            // Cellar::create([
+            //     'user_id' => $user->id,
+            //     'name' => 'Cellier 1'
+            // ]);
 
             DB::commit();
 

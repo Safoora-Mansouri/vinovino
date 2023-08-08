@@ -11,20 +11,22 @@ use Illuminate\Support\Facades\Auth;
 class AddBottlesToCellar extends Component
 {
     
-    public $bottle_id, $cellar_id, $quantity, $bottle, $cellars;
+    public $bottle_id, $cellar_id, $quantity, $bottle;
 
     public function mount($bottle_id)
     {
         $this->bottle_id = $bottle_id;
-        $this->cellars = Cellar::where('user_id', Auth::id())->get();
+        $this->cellar_id = Cellar::where('user_id', Auth::id())->first()->id ?? 0;
+    }
+    
 
         // Set a default value here, it can be any value that doesn't exist as an ID in your 'cellars' table.
-    }
+   
 
 
     public function store()
     {
-
+       
         $bottleInCellar = BottleInCellar::where('bottle_id', $this->bottle_id)
             ->where('cellar_id', $this->cellar_id)
             ->first();
@@ -46,7 +48,9 @@ class AddBottlesToCellar extends Component
 
     public function render()
     {
-        $cellars = Cellar::all();
+        // $cellars = Cellar::all();
+        
+       $cellars = Cellar::where('user_id', Auth::id())->get();
         return view('livewire.add-bottles-to-cellar', ['cellars' => $cellars]);
     }
 }
