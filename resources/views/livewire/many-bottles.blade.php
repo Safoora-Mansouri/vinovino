@@ -1,6 +1,5 @@
 <div>
     <div class="mt-6">
-        <!-- Add the filter buttons and the SVG icon button in one row -->
         <div class="max-w-1200px">
             <div class="flex items-center justify-between space-x-2 mb-10 mt-5 ml-5">
                 <div class="flex items-center space-x-2">
@@ -27,29 +26,25 @@
                 @endif
             </div>
             @if ($unlisted)
-            <a href="{{ route('add-bottle') }}"  class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600">
+                <a href="{{ route('add-bottle') }}"  class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600">
                 @livewire('button', ['label' => 'Ajouter nouvelle bouteille'])
-            </a>
-        @endif
+                </a>
+            @endif
 
             @foreach($bottles as $bottle)
-            <article class="relative mx-6 my-2 flex border-2 border-red-500 bg-white rounded-3xl items-center gap-2 mb-12">
-            <img src="{{ $bottle->image }}" alt="{{ $bottle->name }}" class="w-36 h-40 relative bottom-3 -mt-4 transform transition-transform duration-300 hover:scale-125 hover:brightness-80" style="width: 144px; height: 160px;">
+                <article class="relative mx-6 my-2 flex border-2 border-red bg-white rounded-3xl items-center gap-2 mb-12">
+                    <img src="{{ $bottle->image }}" alt="{{ $bottle->name }}" class="max-w-80 relative bottom-3 -mt-4 transform transition-transform duration-300 hover:scale-125 hover:brightness-80">
 
-                <div class="flex flex-col justify-end items-left p-4 sm:flex-row sm:justify-between sm:gap-4">
-                    <h1 class="text-left font-bold font-roboto">{{ $bottle->name }}</h1>
-                    <p class="text-xs mt-2 mb-2">{{ $bottle->description }}</p>
-                </div>
-                <!-- <button wire:click="" class="absolute bottom-3 right-3 rounded-md text-sm font-semibold  shadow-sm flex items-center"> -->
-                <a href="{{ route('add-bottles-to-cellar', ['bottle_id' => $bottle->id]) }}"  class="absolute bottom-2 right-3 rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
-                         <svg class="h-6 w-6 text-red mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 4H6a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-2m-4-1v8m0 0l3-3m-3 3L9 8m-5 5h2.586a1 1 0 01.707.293l2.414 2.414a1 1 0 00.707.293h3.172a1 1 0 00.707-.293l2.414-2.414a1 1 0 01.707-.293H20"/>
-                    </svg>
-                </a>   
-                
-                <!-- </button> -->
-
-            </article>
+                    <div class="flex flex-col justify-end items-left p-4 sm:flex-row sm:justify-between sm:gap-4">
+                        <h1 class="text-left font-bold font-roboto">{{ $bottle->name }}</h1>
+                        <p class="text-xs mt-2 mb-2">{{ $bottle->description }}</p>
+                    </div>
+                    <a href="{{ route('add-bottles-to-cellar', ['bottle_id' => $bottle->id]) }}"  class="absolute bottom-3 right-3 rounded-md text-sm font-semibold  shadow-sm flex items-center">
+                        <svg class="h-6 w-6 text-red mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 4H6a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-2m-4-1v8m0 0l3-3m-3 3L9 8m-5 5h2.586a1 1 0 01.707.293l2.414 2.414a1 1 0 00.707.293h3.172a1 1 0 00.707-.293l2.414-2.414a1 1 0 01.707-.293H20"/>
+                        </svg>
+                    </a>   
+                </article>
             @endforeach
 
             @if ($bottles->count())
