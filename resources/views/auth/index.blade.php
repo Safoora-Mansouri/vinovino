@@ -5,9 +5,8 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body class="bg-gray-100">
-    <div class="flex items-end justify-center h-screen lg:bg-center bg-center bg-no-repeat bg-cover lg:items-center lg:justify-center">
-        <img src="{{ asset('img/page4.jpg') }}" alt="Background" class="absolute inset-0 object-cover w-full h-full" style="object-position: 50% 35%;" />
-        
+    <div class="flex items-end  sm:h-screen justify-center h-screen lg:bg-center bg-center bg-no-repeat bg-cover lg:items-center lg:justify-center">
+        <img src="{{ asset('img/page4.jpg') }}" alt="Background" class="absolute inset-0 object-cover w-full h-screen" style="object-position: 50% 35%;" />
         <div class="absolute top-0 left-0 right-0 flex justify-center lg:justify-start">
             <img src="{{ asset('img/logo3.png') }}" alt="Logo" class="w-96 h-50 mt-16">
         </div>
@@ -56,7 +55,7 @@
         </div>
     </div> -->
 
-    <div class="p-6 bg-white bg-opacity-60 rounded-md text-center w-full ml-16 mb-16 mr-16 lg:w-4/5 lg:max-w-md lg:w-3/4 lg:mb-8 lg:mt-auto lg:p-0 z-10" style="width: calc(100% - 20%); height:33%;">
+    <div class="bg-white bg-opacity-60 rounded-md text-center w-full ml-16 mb-16 mr-16 lg:w-4/5 lg:max-w-md lg:w-3/4 lg:mb-8 lg:mt-auto lg:p-0 z-10" style="width: calc(100% - 20%); height:34%;">
 
         @if(session('success'))
             <div class="bg-green-200 text-green-800 px-12 py-9 rounded text-3xl w-full">

@@ -29,9 +29,9 @@ class Footer extends Component
         return redirect($url);
     }
 
-    public function redirectToBottleSearch()
+    public function redirectToAccueil()
     {
-        return redirect()->route('bottle-search');
+        return redirect()->route('bottles');
     }
 }
 
