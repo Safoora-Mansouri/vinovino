@@ -22,6 +22,9 @@ module.exports = {
         'roboto': ['Roboto', 'sans-serif'],
         'montserrat': ['Montserrat', 'sans-serif']
       },
+      margin: {
+        '05': '5px', // Add your custom margin value here
+      },
     },
   },
   plugins: [
