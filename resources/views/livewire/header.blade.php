@@ -1,10 +1,10 @@
 <header class="relative">
     <!-- User Information (Top Right) -->
-    <div class="bg-red w-full justify-between text-white text-xs">
+    <div class="bg-red  w-full justify-between text-white text-xs">
         <div class="flex items-center justify-between" >
             @auth
             <p class="ml-3">Bonjour {{ $user->first_name }}</p>
-            <svg class="h-5 w-6 text-gray-300 cursor-pointer" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" wire:click="logout" style="margin-right:5px">
+            <svg class="mr-05 h-5 w-6 text-gray-300 cursor-pointer" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" wire:click="logout" >
                 <path stroke="none" d="M0 0h24v24H0z"/>
                 <path d="M14 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2" />
                 <path d="M7 12h14l-3 -3m0 6l3 -3" />
@@ -13,7 +13,7 @@
         </div>
     </div>
      <!-- Logo (Centered) -->
-     <div class="flex justify-center items-center  bg-red">
+     <div class="flex justify-center items-center  bg-red pb-4">
         <svg class="mx-auto" xmlns="http://www.w3.org/2000/svg" width="100pt"  height="65pt" version="1.0" viewBox="0 0 610.000000 409.000000" preserveAspectRatio="xMidYMid meet">
             <defs>
                 <filter id="f1" x="-20%" y="-20%" width="140%" height="140%">

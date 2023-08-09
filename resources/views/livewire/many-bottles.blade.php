@@ -4,10 +4,10 @@
             <div class="flex items-center justify-between space-x-2 mb-8 mt-5 ml-5">
                 <div class="flex items-center space-x-2">
                     <button wire:click="$emit('Filter', false)" class="bg-white text-black px-3 py-1 rounded border border-red hover:bg-red hover:text-white transition-colors duration-300">
-                        Listée
+                        SAQ
                     </button>
                     <button wire:click="$emit('Filter', true)" class="bg-white text-black px-3 py-1 rounded border border-red hover:bg-red hover:text-white transition-colors duration-300">
-                        Non-Listée
+                        Unique
                     </button>
                 </div>
                 <div>
@@ -38,6 +38,7 @@
                     <div class="flex flex-col justify-end items-left p-4 sm:flex-row sm:justify-between sm:gap-4">
                         <h1 class="text-left font-bold font-roboto">{{ $bottle->name }}</h1>
                         <p class="text-xs mt-2 mb-2">{{ $bottle->description }}</p>
+                        <h2 class="text-left  font-montserrat">${{ $bottle->price }}</h2>
                     </div>
                     <a href="{{ route('add-bottles-to-cellar', ['bottle_id' => $bottle->id]) }}"  class="absolute bottom-3 right-3 rounded-md text-sm font-semibold  shadow-sm flex items-center">
                         <svg class="h-6 w-6 text-red mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
