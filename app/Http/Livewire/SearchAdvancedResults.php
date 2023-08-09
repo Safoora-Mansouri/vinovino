@@ -46,7 +46,7 @@ class SearchAdvancedResults extends Component
     if ($this->unlisted) {
         $query->where('unlisted', true);
     } else {
-        $query->where('unlisted', false);
+        $query->where('unlisted', null);
     }
 
     // Apply search filters

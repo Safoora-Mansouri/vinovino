@@ -71,7 +71,7 @@ Route::get('wishlist', AddBottle::class)->name('wishlist');
 
 /////////////////////// Safoora //////////////////
 
-Route::get('update',[SaqController::class,'updateSAQ']);
+Route::get('/update',[SaqController::class,'updateSAQ'])->name('update');
 
 //////////////////////////////////////////////////////////////////
 
@@ -92,16 +92,18 @@ Route::get('/admin-panel', AdminPanel::class)->name('admin-panel');
  Route::get('/bottles-statistics', BottlesStatistics::class)->name('bottles-statistics');
 
 //////////////////////////////////////////////////////////////////////////////////////
-//we have to delete these routes (just for guide)
-Route::get('cellar',[CellarController::class,'index']);
-Route::get('cellar',[CellarController::class,'store']);
+// //we have to delete these routes (just for guide)
+// Route::get('cellar',[CellarController::class,'index']);
+// Route::get('cellar',[CellarController::class,'store']);
 
 
 
-Route::post('addNewBottle',[BottleController::class,'addNewBottle']);
-Route::post('drinkBottleFromCellar',[BottleController::class,'drinkBottleFromCellar']);
-Route::post('addBottleToCellar',[BottleController::class,'addBottleToCellar']);
-Route::get('searchBottle',[BottleController::class,'searchBottle']);
+// Route::post('addNewBottle',[BottleController::class,'addNewBottle']);
+// Route::post('drinkBottleFromCellar',[BottleController::class,'drinkBottleFromCellar']);
+// Route::post('addBottleToCellar',[BottleController::class,'addBottleToCellar']);
+// Route::get('searchBottle',[BottleController::class,'searchBottle']);
+
+
 
 /////////////////////// Fin Safoora ///////
 

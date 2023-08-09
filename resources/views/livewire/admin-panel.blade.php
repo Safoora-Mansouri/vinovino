@@ -13,7 +13,7 @@
         <ul class="space-y-2">
             <li class="py-2">
                 <!-- <a href="{{ route('cellars-statistics') }}" class="block px-4 py-2 rounded hover:bg-blue-800">statistique des Cellieres</a> -->
-                <a href="#cellars-statistics" wire:click="$set('page', 'cellars-statistics')" class="block px-4 py-2 rounded hover:bg-blue-800">statistique des Usageres</a>
+                <a href="#cellars-statistics" wire:click="$set('page', 'cellars-statistics')" class="block px-4 py-2 rounded hover:bg-blue-800">statistique des Cellieres</a>
 
             </li>
             <li class="py-2">
@@ -23,7 +23,12 @@
             </li>
             <li class="py-2">
                 <!-- <a href="{{ route('bottles-statistics') }}" class="block px-4 py-2 rounded hover:bg-blue-800">statistique des Bouteilles </a> -->
-                <a href="#bottles-statistics" wire:click="$set('page', 'bottles-statistics')" class="block px-4 py-2 rounded hover:bg-blue-800">statistique des Usageres</a>
+                <a href="#bottles-statistics" wire:click="$set('page', 'bottles-statistics')" class="block px-4 py-2 rounded hover:bg-blue-800">statistique des bouteilles</a>
+
+            </li>
+            <li class="py-2">
+                <!-- <a href="{{ route('bottles-statistics') }}" class="block px-4 py-2 rounded hover:bg-blue-800">statistique des Bouteilles </a> -->
+                <a href="{{ route('update') }}"  class="block px-4 py-2 rounded hover:bg-blue-800">Mise a jour SAQ</a>
 
             </li>
             <!-- Add more sidebar items as needed -->
