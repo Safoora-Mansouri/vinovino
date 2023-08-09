@@ -1,22 +1,22 @@
-<div style="display: flex; justify-content: center; align-items: center; height: 100vh;">
-    <div style="background-color: #9B0738; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); width: 400px;">
-         @if ($errorMessage)
-            <div style="background-color: yellow; color: #9B0738; padding: 10px; border-radius: 4px; margin-bottom: 15px; text-align: center;">{{ $errorMessage }}</div>
+<div class="fixed top-10 left-7 flex justify-center items-center h-screen  lg:right-6 ">
+    <div class="bg-dark-red bg-opacity-50 p-6 rounded-lg shadow-md w-80 lg:w-96">
+        @if ($errorMessage)
+            <div class="bg-gold text-red  rounded-md mb-4 text-center">{{ $errorMessage }}</div>
         @endif
-        <form style="display: flex; flex-direction: column;" wire:submit.prevent="handleSearch">
-            <label for="name" style="margin-bottom: 10px; color: white;">Nom:</label>
-            <input style="padding: 5px; margin-bottom: 15px; width: 100%; border-radius: 4px; border: 1px solid #FB7F6; color: #FB7F6;" wire:model="search" type="text" placeholder="Nom...">
+        <form class="flex flex-col" wire:submit.prevent="handleSearch">
+            <label for="name" class="mb-2 text-white">Nom:</label>
+            <input class="p-2 mb-2 w-full rounded-md border border-red-500 text-red-500" wire:model="search" type="text" placeholder="Nom...">
 
-            <label for="description" style="margin-bottom: 10px; color: white;">Pays:</label>
-            <input style="padding: 5px; margin-bottom: 15px; width: 100%; border-radius: 4px; border: 1px solid #FB7F6; color: #FB7F6;" wire:model="description" id="description" type="text" placeholder="Pays...">
+            <label for="description" class="mb-2 text-white">Pays:</label>
+            <input class="p-2 mb-2 w-full rounded-md border border-red-500 text-red-500" wire:model="description" id="description" type="text" placeholder="Pays...">
 
-            <label for="priceMin" style="margin-bottom: 10px; color: white;">Prix minimum:</label>
-            <input style="padding: 5px; margin-bottom: 15px; width: 100%; border-radius: 4px; border: 1px solid #FB7F6; color: #FB7F6;" wire:model="priceMin" type="number" placeholder="Prix minimum...">
+            <label for="priceMin" class="mb-2 text-white">Prix minimum:</label>
+            <input class="p-2 mb-2 w-full rounded-md border border-red-500 text-red-500" wire:model="priceMin" type="number" placeholder="Prix minimum...">
 
-            <label for="priceMax" style="margin-bottom: 10px; color: white;">Prix maximal:</label>
-            <input style="padding: 5px; margin-bottom: 30px; width: 100%; border-radius: 4px; border: 1px solid #FB7F6; color: #FB7F6;" wire:model="priceMax" type="number" placeholder="Prix maximal...">
+            <label for="priceMax" class="mb-2 text-white">Prix maximal:</label>
+            <input class="p-2 mb-6 w-full rounded-md border border-red-500 text-red-500" wire:model="priceMax" type="number" placeholder="Prix maximal...">
 
-            <button style="padding: 10px; width: 100%; background-color: #927A50; color: white; font-weight: bold; border: none; border-radius: 4px; cursor: pointer;" wire:click="handleSearch">Recherche</button>
+            <button class="p-3 bg-red text-white font-bold rounded-md w-full cursor-pointer" wire:click="handleSearch">Recherche</button>
         </form>
     </div>
 </div>
