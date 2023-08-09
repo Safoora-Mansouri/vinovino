@@ -1,5 +1,5 @@
 <div class="fixed top-10 left-7 flex justify-center items-center h-screen  lg:right-6 ">
-    <div class="bg-dark-red bg-opacity-50 p-6 rounded-lg shadow-md w-80 lg:w-96">
+    <div class="bg-dark-red bg-opacity-55 p-6 rounded-lg shadow-md w-80 lg:w-96">
         @if ($errorMessage)
             <div class="bg-gold text-red  rounded-md mb-4 text-center">{{ $errorMessage }}</div>
         @endif
