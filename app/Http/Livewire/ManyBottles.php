@@ -6,6 +6,7 @@ use Livewire\Component;
 use App\Models\Bottle;
 use App\Models\UnlistedBottle;
 use Livewire\WithPagination;
+use PhpOption\None;
 
 class ManyBottles extends Component
 {
@@ -69,4 +70,5 @@ class ManyBottles extends Component
         $this->unlisted = $newFilter;
         $this->resetPage();
     }
+    
 }
