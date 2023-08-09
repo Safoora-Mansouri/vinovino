@@ -70,6 +70,8 @@ class BottleSearch extends Component
         {
             $this->results = [];
             $this->emit('searchPerformed', $this->search);
+            $this->results = []; // Clear the search results
+            $this->search = ''; // Clear the search input
         }
 
     public function render()

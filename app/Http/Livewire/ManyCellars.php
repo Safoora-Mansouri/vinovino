@@ -11,8 +11,9 @@ class ManyCellars extends Component
     public $cellars;
     public $search = '';
     public $userId;
+    public $showSearch = false;
 
-    protected $listeners = ['searchPerformed'];
+    protected $listeners = ['toggleSearch','searchPerformed'];
 
     public function mount()
     {
@@ -40,5 +41,10 @@ class ManyCellars extends Component
     {
         $this->search = $search;
         $this->loadCellars();
+    }
+
+    public function toggleSearch()
+    {
+        $this->showSearch = !$this->showSearch; // Toggle the visibility
     }
 }
