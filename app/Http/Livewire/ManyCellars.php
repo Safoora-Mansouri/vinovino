@@ -15,6 +15,7 @@ class ManyCellars extends Component
     public $userId;
     public $cellar_name;
     public $updateMode = 0;
+    public $showSearch = false;
 
     protected $rules = [
         'cellar_name' => 'required|string|max:255',
@@ -27,6 +28,7 @@ class ManyCellars extends Component
     ];
 
     protected $listeners = [
+        'toggleSearch',
         'searchPerformed',
          'cellarDeleted' => 'loadCellars',
         'cellarUpdated' => 'updateCellar'
@@ -48,10 +50,16 @@ class ManyCellars extends Component
             $this->cellars = Cellar::where('user_id', $this->userId)->get();
         }
     }
+
     public function updateCellarMode($cellarId)
-    {
-        $this->updateMode = $cellarId;
+{
+    $cellar = Cellar::where('id', $cellarId)->first();
+    if ($cellar) {
+        $this->cellar_name = $cellar->name; // Set the input field to the current name of the cellar
+        $this->updateMode = $cellarId; // Set the update mode to the cellar ID
     }
+}
+
 
     public function updateCellar()
     {
@@ -67,6 +75,8 @@ class ManyCellars extends Component
             $cellar->name = $this->cellar_name;
             $cellar->save();
             $this->emit('cellarUpdated');
+            $this->cellar_name = ""; // Reset the input field
+            $this->updateMode = 0; // Exit update mode
         }
     }
 
@@ -93,5 +103,10 @@ class ManyCellars extends Component
     {
         $this->search = $search;
         $this->loadCellars();
+    }
+
+    public function toggleSearch()
+    {
+        $this->showSearch = !$this->showSearch; // Toggle the visibility
     }
 }

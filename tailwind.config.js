@@ -10,7 +10,7 @@ module.exports = {
         'dark-red': '#251322',
         'red': '#9B0738',
         'pale-pink': '#FB7F6',
-        'gold': '#927A50',
+        'gold': '#a9926b',
         'gray': '#c4c0bc',
       },
       maxWidth:{
