@@ -12,7 +12,7 @@ class ManyBottles extends Component
 {
     use WithPagination;
 
-    public $unlisted = null;
+    public $unlisted = false;
     public $search = '';
     public $showSearch = false;
 
@@ -28,7 +28,7 @@ class ManyBottles extends Component
         if ($this->unlisted) {
             $bottles = Bottle::where('unlisted', true);
         } else {
-            $bottles = Bottle::where('unlisted', null);
+            $bottles = Bottle::where('unlisted', false);
         }
         if (!empty($this->search)) {
             $bottles->where(function ($query) {
